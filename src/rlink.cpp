@@ -108,7 +108,7 @@ void RWrap::New(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   RWrap* w = new RWrap();
 
   RInside* q = w->GetWrapped();
-  std::string load_command = "library(rjson, quietly=TRUE);";
+  std::string load_command = "library(jsonlite, quietly=TRUE);";
   q->parseEvalQ(load_command);
 
   w->Wrap(info.This());
