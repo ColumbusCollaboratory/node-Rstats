@@ -123,7 +123,7 @@ void RWrap::parseEval(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   v8::String::Utf8Value param(info[0]->ToString());
   std::string command = std::string(*param);
   std::string wrapper_before = "toJSON(";
-  std::string wrapper_after = ");";
+  std::string wrapper_after = ", force=TRUE);";
   std::string full_command = wrapper_before + command + wrapper_after;
 
   Handle<Object> global = Nan::GetCurrentContext()->Global();
@@ -222,7 +222,7 @@ void RWrap::get(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   v8::String::Utf8Value param(info[0]->ToString());
   std::string name = std::string(*param);
   std::string command_pt1 = "toJSON(";
-  std::string command_pt2 = ");";
+  std::string command_pt2 = ", force=TRUE);";
   std::string full_command = command_pt1 + name + command_pt2;
 
   Handle<Object> global = Nan::GetCurrentContext()->Global();
